@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "صفحه اصلی";
+}
+
+<h2>صفحه اصلی</h2>
+
+<div class="row">
+    <div class="col-md-4 mb-3">
+        <section class="border rounded-2">
+            <div class="bg-secondary rounded-top p-3 mb-3">
+                <h6 class="mb-0"><i class="icon icon-folder-open"></i> دسته بندی ها</h6>
+            </div>
+            @Html.Action("ShowGroups", "News")
+        </section>
+    </div>
+    <div class="col-md-8">
+        <section class="border rounded-2">
+            <div class="bg-secondary rounded-top p-3">
+                <h6 class="mb-0"><i class="icon icon-folder-open"></i> آخرین اخبار</h6>
+            </div>
+            @Html.Action("ShowNews", "News")
+        </section>
+    </div>
+</div>

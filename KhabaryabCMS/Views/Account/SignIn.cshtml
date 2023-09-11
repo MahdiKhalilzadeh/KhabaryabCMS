@@ -1,0 +1,34 @@
+﻿@model KhabaryabCMS.ViewModels.SignInViewModel
+
+@{
+    ViewBag.Title = "فرم ورود به به سایت خبری خبریاب";
+    Layout = "~/Views/Shared/_LayoutAccount.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <a href="#" title="صفحه اصلی"><img class="mb-4" src="/images/Logo.svg" alt="" width="72" height="72"></a>
+    <h1 class="h3 mb-3 fw-normal">فرم ورود</h1>
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.ValidationMessageFor(model => model.Username, null, new { @class = "text-danger" })
+    @Html.ValidationMessageFor(model => model.Password, null, new { @class = "text-danger" })
+
+    <div class="form-floating">
+        @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control form-first", placeholder = "admin" } })
+        <label for="NameOrPhone">@Html.DisplayNameFor(model => model.Username)</label>
+    </div>
+    <div class="form-floating">
+        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control form-last", placeholder = "****", type = "password" } })
+        <label for="Password">@Html.DisplayNameFor(model => model.Password)</label>
+    </div>
+
+    <div class="checkbox my-3">
+        <input type="checkbox" class="form-check-input me-1" name="RememberMe" id="RememberMe" value="true" />
+        <label for="RememberMe">@Html.DisplayNameFor(model => model.RememberSession)</label>
+    </div>
+    <button class="w-100 btn btn-lg btn-primary mb-4" type="submit">ورود</button>
+
+    <p class="mt-4 mb-3 text-muted">1402 © سایت خبری خبریاب</p>
+}

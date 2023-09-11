@@ -1,0 +1,34 @@
+﻿@model KhabaryabCMS.Models.News
+
+<h2>مشخصات خبر</h2>
+
+<div class="row">
+    <div class="col-md-4 mb-3">
+        <section class="border rounded-2">
+            <div class="bg-secondary rounded-top p-3 mb-3">
+                <h6 class="mb-0"><i class="icon icon-folder-open"></i> دسته بندی ها</h6>
+            </div>
+            @Html.Action("ShowGroups", "News")
+        </section>
+    </div>
+    <div class="col-md-8 mb-3">
+        <section class="border rounded-2">
+            <div class="bg-secondary rounded-top p-3">
+                <h6 class="mb-0"><i class="icon icon-folder-open"></i> مشخصات خبر</h6>
+            </div>
+            <div class="p-3">
+                <h3>@Model.Title</h3>
+                <img src="~/images/News/@Model.Image" class="img-fluid rounded col-lg-8 d-block my-3 mx-auto" />
+                <h5>@Model.Description</h5>
+                <p>@Html.Raw(Model.Content.Replace("\n", "<br/>"))</p>
+                <p class="mb-0">
+                    @Model.Writer.FullName
+                    @if (Request.IsAuthenticated)
+                    {
+                        <span>-</span> <a href="/News/Edit/@Model.NewsID">ویرایش</a>
+                    }
+                </p>
+            </div>
+        </section>
+    </div>
+</div>

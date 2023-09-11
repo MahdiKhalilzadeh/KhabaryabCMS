@@ -1,0 +1,22 @@
+﻿@model IEnumerable<KhabaryabCMS.Models.News>
+
+@{
+    Layout = ViewBag.Layout;
+}
+
+@foreach (var item in Model)
+{
+    <a href="/News/@item.NewsID" class="text-decoration-none row p-3">
+        <div class="col-3">
+            <img src="~/images/news/@item.Image" class="img-fluid rounded" />
+        </div>
+        <div class="col row">
+            <h5 class="p-1">@item.Title</h5>
+            <p>@item.Description</p>
+        </div>
+    </a>
+    if (item != Model.Last())
+    {
+        <hr class="m-0" />
+    }
+}

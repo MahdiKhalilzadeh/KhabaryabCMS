@@ -1,0 +1,14 @@
+﻿@model IEnumerable<KhabaryabCMS.Models.NewsGroup>
+
+@{
+    Layout = ViewBag.Layout;
+}
+
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>
+            <a href="/Group/@item.GroupID" class="text-decoration-none">@item.Title <span class="badge rounded-pill text-bg-info float-end me-3">@item.News.Count</span></a>
+        </li>
+    }
+</ul>

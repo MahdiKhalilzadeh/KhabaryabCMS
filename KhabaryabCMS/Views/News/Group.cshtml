@@ -1,0 +1,24 @@
+﻿@model KhabaryabCMS.Models.NewsGroup
+
+<section class="border rounded-2">
+    <div class="bg-secondary rounded-top p-3">
+        <h6 class="mb-0"><i class="icon icon-folder-open"></i> @ViewBag.Title</h6>
+    </div>
+    @foreach (var item in Model.News)
+    {
+        <a href="/News/@item.NewsID" class="text-decoration-none row p-3">
+            <div class="col-3">
+                <img src="~/images/news/@item.Image" class="img-fluid rounded" />
+            </div>
+            <div class="col row">
+                <h5 class="p-1">@item.Title</h5>
+                <p>@item.Description</p>
+            </div>
+        </a>
+        if (item != Model.News.Last())
+        {
+            <hr class="m-0" />
+        }
+    }
+</section>
+

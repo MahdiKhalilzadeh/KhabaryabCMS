@@ -1,0 +1,76 @@
+﻿@model KhabaryabCMS.Models.News
+
+@{
+    ViewBag.Title = "ویرایش خبر";
+}
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-horizontal text-start">
+        <div class="row">
+            <div class="col-md-6">
+                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                <div class="form-floating mb-3">
+                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control", placeholder = "mser.ir" } })
+                    @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "floatingInput" })
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                <div class="form-floating mb-3">
+                    @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", placeholder = "mser.ir" } })
+                    @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "floatingInput" })
+                </div>
+            </div>
+        </div>
+
+        @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
+        <div class="form-floating mb-3">
+            @Html.TextAreaFor(model => model.Content, htmlAttributes: new { @class = "form-control", placeholder = "mser.ir", style = "height:150px" })
+            @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "floatingInput" })
+        </div>
+
+        <div class="mb-3 h-100 col-lg-6">
+            <input type="file" id="NewImage" accept="image/png, image/gif, image/jpeg" name="NewImage" hidden>
+            <label class="custom-file-upload input-group">
+                <span id="selectFile" class="input-group-text">انتخاب تصویر</span>
+                <input type="text" id="file-name" class="form-control" value="@(Model != null && !string.IsNullOrEmpty(Model.Image) ? Model.Image : "تصویری انتخاب نشده")" readonly>
+            </label>
+        </div>
+        <img id="preview" @Html.Raw(Model != null && !string.IsNullOrEmpty(Model.Image) ? "src=\"/images/news/" + Model.Image + "\"" : "") class="img-fluid col-12 col-lg-6" />
+
+        <div class="d-grid col-sm-1 mt-3">
+            <input type="submit" class="btn btn-warning fw-bold p-2" value="ویرایش" />
+        </div>
+    </div>
+
+}
+
+@section scripts{
+    <script>
+        const fileInput = document.getElementById("NewImage");
+        const fileNameInput = document.getElementById("file-name");
+        const button = document.getElementById("selectFile");
+        button.addEventListener("click", function () {
+            fileInput.click();
+        });
+        fileNameInput.addEventListener("click", function () {
+            fileInput.click();
+        });
+        fileInput.addEventListener("change", function () {
+            if (fileInput.files.length > 0) {
+                fileNameInput.value = fileInput.files[0].name;
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById('preview').src = e.target.result;
+                };
+                reader.readAsDataURL(fileInput.files[0]);
+            } else {
+                fileNameInput.value = "";
+            }
+        });
+    </script>
+}

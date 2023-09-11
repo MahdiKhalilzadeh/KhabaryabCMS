@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/bootstrap.rtl.min.css">
+    <link rel="stylesheet" href="~/css/khabaryab.icons.css">
+    <link rel="stylesheet" href="~/css/khabaryab.style.css">
+    @RenderSection("Styles", false)
+    <title>@ViewBag.Title - جستجوگران</title>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="px-3 py-2 text-bg-dark mb-4">
+            <div class="container">
+                <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                    <a href="/" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
+                        <img src="/images/Logo.svg" class="ch-logo" width="48" height="48">
+                    </a>
+
+                    <ul class="nav col-12 col-lg-auto my-2 justify-content-center flex-row-reverse my-md-0 text-small text-center">
+                        <li>
+                            <a href="/" class="nav-link text-secondary">
+                                <i class="icon icon-home fs-4 bi d-block ms-auto mb-2"></i>
+                                خانه
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/Groups" class="nav-link text-secondary">
+                                <i class="icon icon-book fs-4 bi d-block ms-auto mb-2"></i>
+                                گروه های خبری
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/TopNews" class="nav-link text-secondary">
+                                <i class="icon icon-book fs-4 bi d-block ms-auto mb-2"></i>
+                                اخبار
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Intro -->
+    <div class="container" id="intro">
+        @RenderBody()
+    </div>
+    @RenderSection("Scripts", false)
+
+
+    <!-- Footer -->
+    <div class="container mt-auto">
+        <footer class="py-3">
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                <li class="nav-item"><a href="/" class="nav-link px-2 text-muted">خانه</a></li>
+                <li class="nav-item"><a href="/Featurs" class="nav-link px-2 text-muted">امکانات</a></li>
+                <li class="nav-item"><a href="/About" class="nav-link px-2 text-muted">درباره</a></li>
+            </ul>
+            <p class="text-center text-muted">تمام حقوق برای سایت <a href="/" class="text-secondary text-bold">خبریاب</a> محفوظ میباشد</p>
+        </footer>
+    </div>
+
+</body>
+
+</html>
